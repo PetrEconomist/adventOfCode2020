@@ -6,11 +6,11 @@ import collectionsConvertor.listsConvertor;
 import fileReader.ReadFile;
 
 
-public class dayOneSolution {
+public class Day1Solution {
 	
 	public static void main(String[] args) {
 		int expectedSum = 2020;
-		LinkedList<Integer> input = listsConvertor.convertToInt(ReadFile.getFileAsList("dayOneInput.txt"));
+		LinkedList<Integer> input = listsConvertor.convertToInt(ReadFile.getFileAsList("day1Input.txt"));
 		
 		part1Solution(input, expectedSum);
 		part2Solution(input, expectedSum);

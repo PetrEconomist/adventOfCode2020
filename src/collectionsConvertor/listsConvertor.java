@@ -2,6 +2,8 @@ package collectionsConvertor;
 
 import java.util.LinkedList;
 
+import stringFunctions.StringJoiner;
+
 public class listsConvertor {
 	/**
 	 * Converts string list to int list
@@ -20,9 +22,10 @@ public class listsConvertor {
 	 * Joins list items together (concatenate). Items' data are separated by empty item. 
 	 * Deletes empty items and returns joined data about items. 
 	 * @param input with
+	 * @param separator separator between joined lines
 	 * @return
 	 */
-	public static LinkedList<String> concatEmptyLineSeparatedData(LinkedList<String> input){
+	public static LinkedList<String> concatEmptyLineSeparatedData(LinkedList<String> input, String separator){
 		LinkedList<String> output = new LinkedList<String>();
 		// Loop over input
 		int item = 0;
@@ -35,16 +38,19 @@ public class listsConvertor {
 			//Loop until empty line, concat
 			String conStr = "";
 			while(input.get(item).length()>=1) {
-				if(conStr.length()==0) {
-					conStr = input.get(item);
-				}else {
-					conStr = conStr +  " " + input.get(item);
-				}
+				//concat text
+				conStr = StringJoiner.joinString(new String[] {conStr, input.get(item)}, separator);
+				//go to next item
 				item++;
+				//if at the end of input, do not iterate the loop
 				if(item==input.size())break;
 			}
 			output.add(conStr); 
 		}
 		return output;		 
+	}
+	
+	public static LinkedList<String> concatEmptyLineSeparatedData(LinkedList<String> input){
+		return concatEmptyLineSeparatedData(input, " ");
 	}
 }

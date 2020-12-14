@@ -32,4 +32,19 @@ public class StringSymbols {
 		return output;
 	}
 	
+	/**
+	 * Returns position of the first whitespace in the given string
+	 * @param input string where whitespace is to be found
+	 * @return whitespace position, -1 if not found
+	 */
+	public static int getWhitespacePos(String input) {
+	    if(input != null){
+	        for(int i = 0; i < input.length(); i++){
+	            if(Character.isWhitespace(input.charAt(i))){
+	                return i;
+	            }
+	        }
+	    }
+	    return -1;
+	}
 }

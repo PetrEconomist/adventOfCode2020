@@ -11,7 +11,6 @@ public class Day6Solution {
 	private static final String FILE_NAME = "day6Input.txt"; 
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		final LinkedList<String> input = ReadFile.getFileAsList(FILE_NAME);
 		final LinkedList<String> joinedLines = listsConvertor.concatEmptyLineSeparatedData(input, "");
 		System.out.printf("part1Solution: %d\n", part1Solution(joinedLines));

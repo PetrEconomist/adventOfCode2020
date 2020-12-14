@@ -42,7 +42,6 @@ public class Day7Solution {
 		for(String[] rule : rulesInput) {
 			rules.addEdge(rule[0], rule[1], Integer.parseInt(rule[2]));
 		}
-		
 	}
 	
 	/**

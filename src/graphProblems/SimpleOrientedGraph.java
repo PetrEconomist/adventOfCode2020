@@ -7,6 +7,10 @@ import java.util.LinkedList;
  * Describes graph and provides functions on the graph
  * Graph edges have their values.
  * Tree type - only one predecessor, can be multiple successors
+ * TODO Can be improved, by replacing edges by vertices as graph performance will rapidly
+ * decrease with increasing cound of edges. In this scenario, graph would consist of vertices,
+ * each would contain information about its successor(s), predecessors(s) an further information about 
+ * edges (in this case value of the edge) 
  * @author Petr
  *
  */
@@ -38,11 +42,13 @@ public class SimpleOrientedGraph {
 		addEdge(fromVertex, toVertex, (double) value);
 	}
 	
+	
 	/**
 	 * Gets all leaves of the given vertex
 	 * @param vertex of which we find leaves
 	 * @return leaves of the vertex
 	 */
+	/*
 	public HashSet<String> getLeaves(String vertex){
 		//output
 		HashSet<String> leaves = new HashSet<String>();
@@ -58,6 +64,7 @@ public class SimpleOrientedGraph {
 		}
 		return leaves;
 	}
+	*/
 	
 	public HashSet<String> getPredecessorsAll(String vertex){
 		//initiate set for output
@@ -100,6 +107,7 @@ public class SimpleOrientedGraph {
 		return output;
 	}
 	
+	/*
 	private boolean isLeaf(String vertex) {
 		//loop over edges if vertex is "parent" vertex
 		for(Edge e: edges) {
@@ -109,6 +117,7 @@ public class SimpleOrientedGraph {
 		}
 		return true;
 	}
+	*/
 	
 	
 	
@@ -178,16 +187,13 @@ public class SimpleOrientedGraph {
 		double getEdgeValue() {
 			return edgeValue;
 		}
-		
-		void setEdgeValue(double value) {
-			this.edgeValue = value;
-		}
-		
-		
+				
 		/**
 		 *  Overriding equals() to compare two Edge objects 
 		 */
+		/*
 		@Override
+		
 		public boolean equals(Object o) {
 			
 			// If the object is compared with itself then return true   
@@ -195,8 +201,8 @@ public class SimpleOrientedGraph {
 	            return true; 
 	        } 
 	  
-	        /* Check if o is an instance of Complex or not 
-	          "null instanceof [type]" also returns false */
+	        // Check if o is an instance of Complex or not 
+	        //  "null instanceof [type]" also returns false
 	        if (!(o instanceof Edge)) { 
 	            return false; 
 	        } 
@@ -209,7 +215,8 @@ public class SimpleOrientedGraph {
 				this.getToVertex().equals(e.getToVertex())
 			); 
 		}
-		
+		 */
+
 	}
 	
 }

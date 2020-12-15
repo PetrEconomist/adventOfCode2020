@@ -19,6 +19,19 @@ public class listsConvertor {
 	}
 	
 	/**
+	 * Converts string list to double list
+	 * @param input list of numbers, but as strings
+	 * @return list of numbers as integers
+	 */
+	public static LinkedList<Double> convertToDouble(LinkedList<String> input){
+		LinkedList<Double> output = new LinkedList<Double>();
+		for(String s : input) {
+			output.add(Double.parseDouble(s));
+		}
+		return output;
+	}
+	
+	/**
 	 * Joins list items together (concatenate). Items' data are separated by empty item. 
 	 * Deletes empty items and returns joined data about items. 
 	 * @param input with

@@ -41,8 +41,7 @@ public class Day10Solution {
 	private static long part2Solution() {
 		return adaptersCombinations();
 	}
-	
-	
+		
 	/**
 	 * Goes through adapters and counts possible combinations, based on rule that
 	 * maximal difference between adapters is 3 
@@ -51,10 +50,15 @@ public class Day10Solution {
 	private static long adaptersCombinations() {
 		int minAdapterValue = inputSorted.get(0);
 		int maxAdapterValue = inputSorted.get(inputSorted.size()-1);
-		crateCombinations combinations = new crateCombinations(1, 0, 0, 0);
+		//first adapter is included, e.i. one total combination, valid
+		CrateCombinations combinations = new CrateCombinations(1, 0, 0, 0);
+		/* adaptors' combination is represented as sequence of 0 and 1 where
+		 * 1 stands for used adaptor
+		 * 0 stands for missing adaptor (left-out or not available 
+		 */ 
 		for(int adapterValue = minAdapterValue+1; adapterValue<=maxAdapterValue;adapterValue++) {
 			boolean adapterAvailable = inputSorted.contains(adapterValue);
-			combinations =getCombinationsCount(adapterAvailable, combinations);
+			combinations = getCombinationsCount(adapterAvailable, combinations);
 		}
 		return combinations.combinationsCount;
 	}
@@ -62,46 +66,50 @@ public class Day10Solution {
 	
 	
 	/**
-	 * Returns number of combinations
-	 * @param haveOption1 can I add 1 at the end, or only 0?
-	 * @param comCount count of combinations before adding new position at the beginning
-	 * @param x000 count of combinations ending with 000
-	 * @param x00 count of combinations ending with 00
+	 * Returns number of valid combinations, if previous combinations are extended by one element, which will be placed at the end 
+	 * @param elementAvailable can I add element at the end (is available) or will it be empty?
+	 * @param combinationss previous combinations
 	 * @return new combinations, if 0/1 is added to the previous combinations
 	 */
-	private static crateCombinations getCombinationsCount(boolean haveOption1, crateCombinations combinations) {
-		//all combinations (without those invalid) ending with 00 became invalid after adding 0 at the end
+	private static CrateCombinations getCombinationsCount(boolean elementAvailable, CrateCombinations combinations) {
+		/**
+		 * After adding one element to existing combinations ending with "00" will became "000"
+		 * It does not matter if element available, as it will influence count of new combinations
+		 */
 		long x000 = combinations.x00 - combinations.x000;
-		//if I add 0 to x0, I become x00, but I need to subtract invalid combinations x000 previously removed  
+		/**
+		 * After adding one element to existing combinations ending with "0" there are two options:
+		 * - either *"0" was also *"00", then it will become invalid and therefore is not included anymore
+		 * - or *"0" was combination of *"10" and then it will be valid
+		 * As zero will be added (either as not available or as option "element left-out" x0 becomes x00, but without invalid combinations 
+		 */
 		long x00 = combinations.x0 - combinations.x000;
-		if(haveOption1) {
+		
+		if(elementAvailable) {
+			//element available - two options (can be left-out or used)
 			long newCombinations = combinations.combinationsCount * 2;
-			long x0 = newCombinations / 2; //half of new combinations ends with 0;
-			return new crateCombinations(newCombinations - x000, x000, x00, x0);
+			//half of new combinations ends with zero (left-out element)
+			long x0 = newCombinations / 2;
+			return new CrateCombinations(newCombinations - x000, x000, x00, x0);
 		}else {
-			long newCombinations = combinations.combinationsCount; //does not change, only 0 added at the end
+			//element not available - only option of left-out element
+			long newCombinations = combinations.combinationsCount;
 			long x0 = newCombinations; //all new combinations end with 0;
-			return new crateCombinations(newCombinations - x000, x000, x00, x0);
+			return new CrateCombinations(newCombinations - x000, x000, x00, x0);
 		}
 	}
 	
-	
-	static long binomi(int n, int k) {
-        if ((n == k) || (k == 0))
-            return 1;
-        else
-            return binomi(n - 1, k) + binomi(n - 1, k - 1);
-    }
-	
-
-	
-	private static class crateCombinations{
+	private static class CrateCombinations{
+		//total count of combinations
 		long combinationsCount;
+		//count of combinations ending with "000"
 		long x000;
+		//count of combinations ending with "00"
 		long x00;
+		//count of combinations ending with "0"
 		long x0;
 		
-		crateCombinations(long combinationsCount, long x000, long x00, long x0){
+		CrateCombinations(long combinationsCount, long x000, long x00, long x0){
 			this.combinationsCount = combinationsCount;
 			this.x000 = x000;
 			this.x00 = x00;

@@ -2,7 +2,7 @@ package collectionsFunctions;
 
 import java.util.LinkedList;
 
-public class listFunctions {
+public class ListFunctions {
 	
 	/**
 	 * Finds minimal value in given input
@@ -33,5 +33,21 @@ public class listFunctions {
 		}
 		return max;
 	}
+	
+	/**
+	 * Finds maximal value in given input
+	 * @param input where maximum is to be found
+	 * @param beginningPos starting position (including)
+	 * @param endPos ending position (including)
+	 * @return maximal value
+	 */
+	public static int getMaxInteger(LinkedList<Integer> input, int beginningPos, int endPos) {
+		int max = input.get(beginningPos);
+		for(int pos = beginningPos+1;pos<=endPos;pos++) {
+			if(input.get(pos)>max) max = input.get(pos);
+		}
+		return max;
+	}
+	
 	
 }

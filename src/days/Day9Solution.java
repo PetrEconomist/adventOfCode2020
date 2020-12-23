@@ -3,8 +3,8 @@ package days;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-import collectionsConvertor.listsConvertor;
-import collectionsFunctions.listFunctions;
+import collectionsConvertor.ListsConvertor;
+import collectionsFunctions.ListFunctions;
 import fileReader.ReadFile;
 
 public class Day9Solution {
@@ -16,7 +16,7 @@ public class Day9Solution {
 	
 	public static void main(String[] args) {
 		//load raw input
-		input = listsConvertor.convertToDouble(ReadFile.getFileAsList(FILE_NAME));
+		input = ListsConvertor.convertToDouble(ReadFile.getFileAsList(FILE_NAME));
 		double part1Output = part1Solution();
 		System.out.printf("part1Solution: %f\n", part1Output);
 		System.out.printf("part2Solution: %f\n", part2Solution(part1Output));
@@ -34,8 +34,8 @@ public class Day9Solution {
 	
 	private static double part2Solution(double sum) {
 		int[] positions = getContinuousSet(sum);
-		double min = listFunctions.getMin(input, positions[0], positions[1]);
-		double max = listFunctions.getMax(input, positions[0], positions[1]);
+		double min = ListFunctions.getMin(input, positions[0], positions[1]);
+		double max = ListFunctions.getMax(input, positions[0], positions[1]);
 		return min+max;
 	}
 	

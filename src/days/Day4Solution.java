@@ -3,7 +3,7 @@ package days;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import collectionsConvertor.listsConvertor;
+import collectionsConvertor.ListsConvertor;
 import fileReader.ReadFile;
 
 public class Day4Solution {
@@ -20,7 +20,7 @@ public class Day4Solution {
 		// Load the text input with map (symbols)
 		final LinkedList<String> input = ReadFile.getFileAsList(FILE_NAME);
 		// Loop through file lines and join passport inputs from multiple lines together
-		final LinkedList<String> passwordsData = listsConvertor.concatEmptyLineSeparatedData(input);
+		final LinkedList<String> passwordsData = ListsConvertor.concatEmptyLineSeparatedData(input);
 		System.out.printf("Solution part 1: %d\n", part1Solution(passwordsData));
 		System.out.printf("Solution part 2: %d\n", part2Solution(passwordsData));
 	}

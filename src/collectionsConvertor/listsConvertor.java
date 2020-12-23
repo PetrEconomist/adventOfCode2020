@@ -1,10 +1,12 @@
 package collectionsConvertor;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import stringFunctions.StringJoiner;
 
-public class listsConvertor {
+public class ListsConvertor {
 	/**
 	 * Converts string list to int list
 	 * @param input list of numbers, but as strings
@@ -65,5 +67,9 @@ public class listsConvertor {
 	
 	public static LinkedList<String> concatEmptyLineSeparatedData(LinkedList<String> input){
 		return concatEmptyLineSeparatedData(input, " ");
+	}
+	
+	public static List<Integer> sortIntList(LinkedList<Integer> unsorted){
+		return unsorted.stream().sorted().collect(Collectors.toList());   
 	}
 }

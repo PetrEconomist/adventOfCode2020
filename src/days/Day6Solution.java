@@ -3,7 +3,7 @@ package days;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import collectionsConvertor.listsConvertor;
+import collectionsConvertor.ListsConvertor;
 import fileReader.ReadFile;
 import stringFunctions.StringSymbols;
 
@@ -12,9 +12,9 @@ public class Day6Solution {
 	
 	public static void main(String[] args) {
 		final LinkedList<String> input = ReadFile.getFileAsList(FILE_NAME);
-		final LinkedList<String> joinedLines = listsConvertor.concatEmptyLineSeparatedData(input, "");
+		final LinkedList<String> joinedLines = ListsConvertor.concatEmptyLineSeparatedData(input, "");
 		System.out.printf("part1Solution: %d\n", part1Solution(joinedLines));
-		final LinkedList<String> joinedLinesSeparated = listsConvertor.concatEmptyLineSeparatedData(input, ";");
+		final LinkedList<String> joinedLinesSeparated = ListsConvertor.concatEmptyLineSeparatedData(input, ";");
 		System.out.printf("part2Solution: %d\n", part2Solution(joinedLinesSeparated));
 	}
 	

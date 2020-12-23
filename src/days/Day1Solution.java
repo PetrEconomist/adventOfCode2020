@@ -2,7 +2,7 @@ package days;
 
 import java.util.LinkedList;
 
-import collectionsConvertor.listsConvertor;
+import collectionsConvertor.ListsConvertor;
 import fileReader.ReadFile;
 
 
@@ -10,7 +10,7 @@ public class Day1Solution {
 	
 	public static void main(String[] args) {
 		int expectedSum = 2020;
-		LinkedList<Integer> input = listsConvertor.convertToInt(ReadFile.getFileAsList("day1Input.txt"));
+		LinkedList<Integer> input = ListsConvertor.convertToInt(ReadFile.getFileAsList("day1Input.txt"));
 		
 		part1Solution(input, expectedSum);
 		part2Solution(input, expectedSum);

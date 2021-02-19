@@ -11,13 +11,12 @@ public class Day15Solution {
 
 
 	private static final int[] INPUT_RAW = {18, 8, 0 ,5, 4, 1, 20};
-	//private static final int[] INPUT_RAW = {0,3,6};
 	private static Game gm;
 	
 	public static void main(String[] args) {
 		gm = new Game(INPUT_RAW);
-		System.out.printf("part1Solution: %d\n", getNumberInTurn(2020));
-		System.out.printf("part2Solution: %d\n", getNumberInTurn(30000000));
+		System.out.printf("part 1 Solution: %d\n", getNumberInTurn(2020));
+		System.out.printf("part 2 Solution: %d\n", getNumberInTurn(30000000));
 	}
 
 	private static int getNumberInTurn(int turnId) {
@@ -55,6 +54,10 @@ public class Day15Solution {
 			return lastNumber;
 		}
 		
+		/**
+		 * Sets next number
+		 * @return last position with number
+		 */
 		public int setNextNumber() {
 			if(positions.containsKey(lastNumber)) {
 				addNextNumber(lastPosition - positions.get(lastNumber));

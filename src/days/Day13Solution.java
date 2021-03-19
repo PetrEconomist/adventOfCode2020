@@ -2,7 +2,6 @@ package days;
 
 import java.util.LinkedList;
 
-import collectionsFunctions.ListFunctions;
 import fileReader.ReadFile;
 import modulo.ModularArithmetic;
 

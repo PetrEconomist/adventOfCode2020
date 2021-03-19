@@ -2,8 +2,6 @@ package days;
 
 import java.util.LinkedList;
 
-import javax.xml.stream.events.EntityDeclaration;
-
 import fileReader.ReadFile;
 
 public class Day12Solution {
